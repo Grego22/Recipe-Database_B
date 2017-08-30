@@ -5,3 +5,4 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+Recipe.create(ingredients: "Chocalate Chips, brown sugar, eggs, flour, vanilla extract", steps: "prepare and cook", prep_time: "15", cook_time: "45")
