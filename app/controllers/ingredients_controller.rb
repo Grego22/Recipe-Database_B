@@ -20,13 +20,13 @@ class IngredientsController < ApplicationController
   # GET /ingredients/1/edit
   def edit
     @recipe = Recipe.find(params[:recipe_id])
-    @ingredient = Ingredient.find(params[:id])
+    @ingredient = @recipe.ingredients.find(params[:id])
   end
 
   # POST /ingredients
   def create
     @recipe = Recipe.find(params[:recipe_id])
-    @ingredient = Ingredient.new(ingredient_params)
+    @ingredient = @recipe.ingredients.new(ingredient_params)
 
     if @ingredient.save
       redirect_to @ingredient, notice: 'Ingredient was successfully created.'
@@ -37,7 +37,8 @@ class IngredientsController < ApplicationController
 
   # PATCH/PUT /ingredients/1
   def update
-    @ingredient = Ingredient.find(params[:id])
+    @recipe = Recipe.find(params[:recipe_id])
+    @ingredient = @recipe.ingredients.find(params[:id])
     if @ingredient.update(ingredient_params)
       redirect_to @ingredient, notice: 'Ingredient was successfully updated.'
     else
@@ -47,7 +48,8 @@ class IngredientsController < ApplicationController
 
   # DELETE /ingredients/1
   def destroy
-    @ingredient = Ingredient.find(params[:id])
+    @recipe = Recipe.find(params[:recipe_id])
+    @ingredient = @recipe.ingredients.find(params[:id])
     @ingredient.destroy
     redirect_to ingredients_url, notice: 'Ingredient was successfully destroyed.'
   end
