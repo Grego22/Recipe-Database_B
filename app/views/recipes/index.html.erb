@@ -21,7 +21,7 @@
     <tbody class="table-body">
       <%- @recipes.each do |recipe| %>
       <tr>
-        <td><%= recipe.ingredients %></td>
+        <td><%= recipe.ingredients.map %></td>
         <td><%= recipe.steps %></td>
         <td><%= recipe.prep_time %></td>
         <td><%= recipe.cook_time %></td>

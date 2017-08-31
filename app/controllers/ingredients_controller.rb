@@ -1,26 +1,31 @@
 class IngredientsController < ApplicationController
   # GET /ingredients
   def index
-    @ingredients = Ingredient.all
+    @recipe = Recipe.find(params[:recipe_id])
+    @ingredients = @recipe.ingredients
   end
 
   # GET /ingredients/1
   def show
-    @ingredient = Ingredient.find(params[:id])
+    @recipe = Recipe.find(params[:recipe_id])
+    @ingredient = @recipe.ingredients.find(params[:id])
   end
 
   # GET /ingredients/new
   def new
-    @ingredient = Ingredient.new
+    @recipe = Recipe.find(params[:recipe_id])
+    @ingredient = @recipe.ingredients.new
   end
 
   # GET /ingredients/1/edit
   def edit
+    @recipe = Recipe.find(params[:recipe_id])
     @ingredient = Ingredient.find(params[:id])
   end
 
   # POST /ingredients
   def create
+    @recipe = Recipe.find(params[:recipe_id])
     @ingredient = Ingredient.new(ingredient_params)
 
     if @ingredient.save
